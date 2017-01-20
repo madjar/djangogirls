@@ -125,6 +125,7 @@ class Event(models.Model):
         null=True, blank=False, validators=[validate_approximatedate])
     city = models.CharField(max_length=200, null=False, blank=False)
     country = models.CharField(max_length=200, null=False, blank=False)
+    number = models.IntegerField(default=1)
     latlng = models.CharField("latitude and longitude", max_length=30, null=True, blank=True)
     photo = models.ImageField(upload_to="event/cities/", null=True, blank=True,
                               help_text="The best would be 356 x 210px")
