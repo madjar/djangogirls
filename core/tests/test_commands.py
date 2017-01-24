@@ -168,7 +168,7 @@ Event website address is: http://djangogirls.org/oz"""
             self.fail("Event not copied properly!")
 
         assert new_event.city == old_event.city
-        assert new_event.team.count() != old_event.team.count()
+        assert new_event.team.count() == old_event.team.count()
 
         assert new_event.page_main_color == old_event.page_main_color
         assert new_event.content.count() == old_event.content.count()

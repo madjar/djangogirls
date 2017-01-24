@@ -46,7 +46,7 @@ def command():
     click.echo("OK! That's it. Now I'll copy your event.")
 
     new_event = copy_event(event, date)
-    new_event.team.add(**organizers)
+    new_event.team = organizers
 
     click.echo("Website is ready here: http://djangogirls.org/{0}".format(new_event.page_url))
     click.echo("Congrats on yet another event!")
