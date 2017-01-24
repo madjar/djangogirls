@@ -45,8 +45,12 @@ class CopyEventTest(TestCase):
         # inside copy_event method
         previous_event = Event.objects.get(pk=1)
 
-        self.assertEquals(previous_event.name, "{} #1".format(previous_name))
-        self.assertEquals(new_event.name, "{} #2".format(previous_name))
+        assert previous_event.number == 1
+        assert new_event.number == 2
+        assert previous_event.ordinal_name == "{} #1".format(previous_name)
+        assert new_event.ordinal_name == "{} #2".format(previous_name)
+        assert previous_event.page_url == "{}{}".format(new_event.page_url, 1)
+
         self.assertTrue(previous_event.date != new_event.date)
 
         self.assertEquals(previous_event.city, new_event.city)

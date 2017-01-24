@@ -174,6 +174,10 @@ class Event(models.Model):
     def __str__(self):
         return '{}, {}'.format(self.name, self.date)
 
+    @property
+    def ordinal_name(self):
+        return '{} #{}'.format(self.name, self.number)
+
     class Meta:
         ordering = ('-date', )
         verbose_name_plural = "List of events"

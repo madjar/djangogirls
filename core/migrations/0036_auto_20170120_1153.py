@@ -23,7 +23,7 @@ def update_event_number_field(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0032_event_number'),
+        ('core', '0035_event_number'),
     ]
 
     operations = [

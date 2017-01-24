@@ -159,15 +159,16 @@ Event website address is: http://djangogirls.org/oz"""
             input=command_input
         )
         old_event = Event.objects.get(pk=2)
-        name = old_event.name.split('#')[0].strip()
-        new_name = "{} #{}".format(name, new_event_number)
         try:
-            new_event = Event.objects.get(name=new_name)
+            new_event = Event.objects.get(
+                city=old_event.city,
+                country=old_event.country,
+                number=old_event.number+1)
         except Event.DoesNotExist:
             self.fail("Event not copied properly!")
 
         assert new_event.city == old_event.city
-        assert new_event.team.count() == old_event.team.count()
+        assert new_event.team.count() != old_event.team.count()
 
         assert new_event.page_main_color == old_event.page_main_color
         assert new_event.content.count() == old_event.content.count()
