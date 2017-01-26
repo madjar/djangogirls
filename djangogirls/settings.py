@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'captcha',
     'django_countries',
     'gulp_rev',
+    'bootstrapform',
 
     'core',
     'applications',

@@ -1,6 +1,7 @@
 boto3
 click
 django-autoslug
+django-bootstrap-form
 django-click
 dj-database-url
 django-codemirror-widget

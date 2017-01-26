@@ -1,12 +1,15 @@
 {% extends 'global/base.html' %}
 
-{% block content %}
+{% load bootstrap %}
 
+{% block content %}
+<div class="container">
     <form action="" method="post">
-        {{ form.as_p }}
+        {{ form|bootstrap }}
         <div>
             <input type="submit" value="Download PDF">
             {% csrf_token %}
         </div>
     </form>
+</div>
 {% endblock %}
