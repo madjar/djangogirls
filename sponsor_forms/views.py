@@ -10,6 +10,8 @@ from .utils import fill_form
 
 
 class BasePDFFormView(generic.FormView):
+    template_name = 'sponsor_forms/base_form.html'
+
     pdf_template_file = None  # Child class should define this
 
     def form_valid(self, form):
@@ -25,6 +27,5 @@ class BasePDFFormView(generic.FormView):
 
 
 class GitHubWireRequestView(BasePDFFormView):
-    template_name = 'sponsor_forms/base_form.html'
     form_class = GitHubWireRequestForm
     pdf_template_file = 'GitHub_Wire_request.pdf'
