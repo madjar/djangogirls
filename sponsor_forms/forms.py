@@ -1,7 +1,24 @@
 from django import forms
 
 
-class GitHubWireRequestForm(forms.Form):
+class BaseSponsorForm(forms.Form):
+    """
+    A base class that implements the logic of converting between django field
+    names and PDF field names (usually contain spaces and such).
+    """
+
+    PDF_NAME_MAPPING = {}
+
+    def as_pdf_field_names(self):
+        """
+        Return a dict of the form's cleaned data where the keys are valid PDF
+        field names (which can be different from the Django form's field names).
+        """
+        assert self.is_valid()
+        return {self.PDF_NAME_MAPPING.get(k, k): v for k, v in self.cleaned_data.items()}
+
+
+class GitHubWireRequestForm(BaseSponsorForm):
     name = forms.CharField()
     address = forms.CharField()
     city = forms.CharField()
@@ -18,26 +35,17 @@ class GitHubWireRequestForm(forms.Form):
     routing_instructions1 = forms.CharField(required=False)
     routing_instructions2 = forms.CharField(required=False)
 
-    def as_pdf_field_names(self):
-        """
-        Return a dict of the form's cleaned data where the keys are valid PDF
-        field names (which can be different from the Django form's field names).
-        """
-        assert self.is_valid()
-        NAME_MAPPING = {
-            # Only in case the field name doesn't match the one in the PDF
-            'name': 'Name on account',
-            'postcode': 'postal code',
+    PDF_NAME_MAPPING = {
+        'name': 'Name on account',
+        'postcode': 'postal code',
 
-            'iban': 'Bank account number',
-            'swift': 'Swift code',
-            'bank_name': 'Bank name',
-            'bank_address': 'bank address',
-            'bank_city': 'City',
-            'bank_country': 'Country',
+        'iban': 'Bank account number',
+        'swift': 'Swift code',
+        'bank_name': 'Bank name',
+        'bank_address': 'bank address',
+        'bank_city': 'City',
+        'bank_country': 'Country',
 
-            'routing_instructions1': 'additional 01',
-            'routing_instructions2': 'additional 02',
-        }
-
-        return {NAME_MAPPING.get(k, k): v for k, v in self.cleaned_data.items()}
+        'routing_instructions1': 'additional 01',
+        'routing_instructions2': 'additional 02',
+    }

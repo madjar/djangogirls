@@ -1,3 +1,5 @@
+from os import path
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.views import generic
@@ -23,6 +25,6 @@ class BasePDFFormView(generic.FormView):
 
 
 class GitHubWireRequestView(BasePDFFormView):
-    template_name = 'sponsor_forms/github_wire_request.html'
+    template_name = 'sponsor_forms/base_form.html'
     form_class = GitHubWireRequestForm
     pdf_template_file = 'GitHub_Wire_request.pdf'
