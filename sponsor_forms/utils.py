@@ -10,7 +10,8 @@ def fill_form(pdf_file, data):
     command = ['pdftk', pdf_file, 'fill_form', '/dev/stdin', 'output',
                '/dev/stdout']
     process = subprocess.run(command, input=xfdf.encode('utf8'),
-                             stdout=subprocess.PIPE)
+                             stdout=subprocess.PIPE,
+                             check=True)
     return process.stdout
 
 
