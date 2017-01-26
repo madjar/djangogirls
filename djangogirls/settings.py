@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'story',
     'sponsor',
     'coach',
+    'sponsor_forms',
 )
 
 MIDDLEWARE = [

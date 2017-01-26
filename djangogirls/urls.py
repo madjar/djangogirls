@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'', include('sponsor.urls', namespace='sponsor')),
     url(r'', include('applications.urls', namespace='applications')),
     url(r'', include('core.urls', namespace='core')),
+    url(r'sponsor-forms/', include('sponsor_forms.urls', namespace='sponsorforms')),
 ]
 
 if settings.DEBUG:

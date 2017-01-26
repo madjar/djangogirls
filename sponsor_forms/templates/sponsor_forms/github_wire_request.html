@@ -1,0 +1,12 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {{ form.as_p }}
+        <div>
+            <input type="submit" value="Download PDF">
+            {% csrf_token %}
+        </div>
+    </form>
+{% endblock %}
