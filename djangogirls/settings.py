@@ -278,4 +278,4 @@ GAPPS_ADMIN_SDK_SCOPES = 'https://www.googleapis.com/auth/admin.directory.user'
 GAPPS_PRIVATE_KEY_ID = os.environ.get('GAPPS_PRIVATE_KEY_ID', '')
 GAPPS_PRIVATE_KEY = os.environ.get('GAPPS_PRIVATE_KEY', '')
 
-SPONSOR_FORM_PDF_DIR = BASE_DIR
+SPONSOR_FORM_PDF_DIR = os.path.join(BASE_DIR, 'sponsor_forms/files')
