@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import generic
 
 
-from .forms import GitHubWireRequestForm
+from .forms import GitHubACHRequestForm, GitHubWireRequestForm
 from .utils import fill_form
 
 
@@ -29,3 +29,8 @@ class BasePDFFormView(generic.FormView):
 class GitHubWireRequestView(BasePDFFormView):
     form_class = GitHubWireRequestForm
     pdf_template_file = 'GitHub_Wire_request.pdf'
+
+
+class GitHubACHRequestView(BasePDFFormView):
+    form_class = GitHubACHRequestForm
+    pdf_template_file = 'GitHub_ACHrequest.pdf'

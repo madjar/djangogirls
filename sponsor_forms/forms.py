@@ -49,3 +49,15 @@ class GitHubWireRequestForm(BaseSponsorForm):
         'routing_instructions1': 'additional 01',
         'routing_instructions2': 'additional 02',
     }
+
+
+class GitHubACHRequestForm(BaseSponsorForm):
+    account_name = forms.CharField()
+    account_number = forms.CharField()
+    routing_number = forms.CharField()
+
+    PDF_NAME_MAPPING = {
+        'account_name': 'Company Name 5',
+        'account_number': 'Bank Routing Number 7',
+        'routing_number': 'Bank Routing Number 8',
+    }
