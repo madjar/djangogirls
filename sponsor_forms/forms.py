@@ -61,3 +61,12 @@ class GitHubACHRequestForm(BaseSponsorForm):
         'account_number': 'Bank Routing Number 7',
         'routing_number': 'Bank Routing Number 8',
     }
+
+
+class GithubInvoiceForm(BaseSponsorForm):
+    event_city = forms.CharField()
+    invoice_number = forms.CharField()
+    organizer_name = forms.CharField()
+    organizer_address = forms.CharField(widget=forms.Textarea)
+    tax_number = forms.CharField()
+    event_date = forms.CharField()
